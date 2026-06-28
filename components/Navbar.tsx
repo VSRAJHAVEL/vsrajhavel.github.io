@@ -50,7 +50,9 @@ export default function Navbar() {
         <a 
           href="#hero" 
           onClick={() => setMobileMenuOpen(false)}
-          className={`nav-item-stagger font-headline font-bold text-lg md:text-[var(--text-headline-md)] transition-colors uppercase tracking-wider duration-200 text-blue-500 hover:text-blue-600`}
+          className={`nav-item-stagger font-headline font-bold text-lg md:text-[var(--text-headline-md)] transition-colors uppercase tracking-wider duration-200 ${
+            scrolled || mobileMenuOpen ? 'text-black hover:text-blue-600' : 'text-white hover:text-blue-400'
+          }`}
           style={{ transitionDelay: mounted ? '50ms' : '0ms', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(-20px)' }}
         >
           RAJHAVEL V S
