@@ -1724,11 +1724,12 @@
         const countEl = document.getElementById('visitor-count');
         if (countEl) {
             let baseCount = 0;
-            let currentCount = parseInt(localStorage.getItem('total_visits') || baseCount);
-            if (!sessionStorage.getItem('visited')) {
-                sessionStorage.setItem('visited', 'true');
+            // Use a new storage key to force reset previous cached counts
+            let currentCount = parseInt(localStorage.getItem('portfolio_views') || baseCount);
+            if (!sessionStorage.getItem('portfolio_visited')) {
+                sessionStorage.setItem('portfolio_visited', 'true');
                 currentCount++;
-                localStorage.setItem('total_visits', currentCount);
+                localStorage.setItem('portfolio_views', currentCount);
             }
             countEl.textContent = currentCount.toLocaleString();
         }
