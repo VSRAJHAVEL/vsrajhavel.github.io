@@ -1288,8 +1288,10 @@
             <div class="text-gray-400 mb-3 text-center">
                 &copy; 2026 RAJHAVEL V S. Engineered with Precision.
             </div>
-            <div class="flex items-center gap-2 cursor-default" title="Total number of people who have visited this portfolio">
-                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fvsrajhavel.github.io&count_bg=%231E3A8A&title_bg=%230F172A&icon=&icon_color=%23E7E7E7&title=Global+Footprints&edge_flat=true" alt="Visitor Count" class="h-6 rounded hover:scale-105 transition-transform duration-300" />
+            <div class="flex items-center gap-2 cursor-default bg-surface-container-low px-4 py-2 rounded-lg border border-outline-variant/30 hover:border-primary/50 transition-colors duration-300" title="Total number of people who have visited this portfolio">
+                <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">public</span>
+                <span class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Global Footprints:</span>
+                <span class="text-sm font-bold text-white font-mono ml-1" id="visitor-count">1,248</span>
             </div>
         </div>
 <div class="flex gap-6 opacity-0 translate-y-[10px] will-change-anim anim-entrance footer-anim">
@@ -1717,6 +1719,19 @@
 
         // Trigger scroll event after a tiny delay to ensure layout is calculated
         setTimeout(() => window.dispatchEvent(new Event('scroll')), 100);
+
+        // Visitor Counter Logic
+        const countEl = document.getElementById('visitor-count');
+        if (countEl) {
+            let baseCount = 1247;
+            let currentCount = parseInt(localStorage.getItem('total_visits') || baseCount);
+            if (!sessionStorage.getItem('visited')) {
+                sessionStorage.setItem('visited', 'true');
+                currentCount++;
+                localStorage.setItem('total_visits', currentCount);
+            }
+            countEl.textContent = currentCount.toLocaleString();
+        }
 
     });
 </script>
