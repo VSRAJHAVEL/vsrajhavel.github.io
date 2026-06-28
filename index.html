@@ -453,9 +453,9 @@
 <!-- TopNavBar -->
 <header class="fixed top-0 w-full z-50 bg-transparent dark:bg-inverse-surface border-b border-transparent dark:border-outline transition-all duration-200 ease motion-safe:transform motion-safe:transition-transform" id="navbar">
 <div class="flex justify-between items-center px-8 py-4 max-w-[1200px] mx-auto">
-<div class="nav-item-stagger font-headline font-bold text-headline-md text-white transition-colors uppercase tracking-wider transition-colors duration-200" id="nav-brand" style="transition-delay: 50ms;">
+<a href="#" class="nav-item-stagger font-headline font-bold text-headline-md text-white transition-colors uppercase tracking-wider transition-colors duration-200 hover:text-white/80" id="nav-brand" style="transition-delay: 50ms;">
                 RAJHAVEL V S
-            </div>
+            </a>
 <nav class="hidden md:flex gap-8" id="nav-links">
 <a class="nav-link nav-link-anim nav-item-stagger font-body font-medium text-body-md text-white/80 hover:text-white transition-colors transition-colors duration-200" href="#about" style="transition-delay: 100ms;">About</a>
 <a class="nav-link nav-link-anim nav-item-stagger font-body font-medium text-body-md text-white/80 hover:text-white transition-colors transition-colors duration-200" href="#skills" style="transition-delay: 150ms;">Skills</a>
@@ -1317,7 +1317,10 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                if(targetId === '#') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
