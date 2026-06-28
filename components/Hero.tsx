@@ -38,10 +38,10 @@ export default function Hero() {
         
         {/* Hero Profile Image */}
         <div 
-          className="relative opacity-0 translate-x-[60px] will-change-anim anim-entrance"
-          style={{ transitionDelay: '200ms', opacity: 1, transform: 'translateX(0)' }}
+          className="relative opacity-0 translate-y-[30px] md:translate-y-0 md:translate-x-[40px] will-change-anim anim-entrance w-full flex justify-center mt-12 md:mt-0"
+          style={{ transitionDelay: '200ms', opacity: 1, transform: 'translate(0, 0)' }}
         >
-            <div className="hero-profile-card relative rounded-2xl overflow-hidden border-2 border-[var(--color-secondary-fixed-dim)]/30 shadow-2xl max-w-[380px] mx-auto">
+            <div className="hero-profile-card relative rounded-2xl overflow-hidden border-2 border-[var(--color-secondary-fixed-dim)]/30 shadow-2xl w-full max-w-[380px] mx-auto">
                 <Image 
                   src="/PHOTOS/Hero-section-0 (1).jpg" 
                   alt="Rajhavel V S" 
