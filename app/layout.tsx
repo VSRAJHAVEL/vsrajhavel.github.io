@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "RAJHAVEL V S - AI/ML Engineer",
   description: "Rajhavel V S — AI/ML Engineer. Building intelligent systems across Machine Learning, Computer Vision, and scalable web architecture.",
   icons: {
-    icon: '/favicon.png',
+    icon: [{ url: '/favicon.png', type: 'image/png', sizes: 'any' }],
     shortcut: '/favicon.png',
     apple: '/favicon.png',
   },
@@ -55,6 +55,8 @@ export default function RootLayout({
     >
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.png" />
       </head>
       <body className="bg-black text-[var(--color-on-surface)] font-body antialiased selection:bg-[#3B82F6]/30 selection:text-[#3B82F6] overflow-x-hidden">
         <SmoothScroll>
