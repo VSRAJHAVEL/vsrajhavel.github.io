@@ -51,7 +51,7 @@ export default function Navbar() {
           href="#hero" 
           onClick={() => setMobileMenuOpen(false)}
           className={`nav-item-stagger font-headline font-bold text-lg md:text-[var(--text-headline-md)] transition-colors uppercase tracking-wider duration-200 ${
-            scrolled || mobileMenuOpen ? 'text-[var(--color-primary)] hover:text-[#1E3A8A]' : 'text-white hover:text-white/80'
+            scrolled || mobileMenuOpen ? 'text-white hover:text-white/80' : 'text-white hover:text-white/80'
           }`}
           style={{ transitionDelay: mounted ? '50ms' : '0ms', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(-20px)' }}
         >

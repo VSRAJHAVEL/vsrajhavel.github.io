@@ -20,15 +20,15 @@ export default function About() {
               </div>
 
               <div className="about-anim-photo md:col-span-5 bg-[var(--color-surface-container-low)] rounded-3xl overflow-hidden relative group opacity-0 translate-y-[30px] will-change-anim anim-entrance shadow-sm" style={{ transitionDelay: '200ms', minHeight: '300px', opacity: 1, transform: 'translateY(0)' }}>
-                  <Image src="/PHOTOS/Hero-section-0 (2).jpg" alt="Speaking at Karunya" width={600} height={400} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
+                  <Image src="/PHOTOS/Hero-section-0 (2).jpg" alt="Speaking at Karunya" width={600} height={400} className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
               <div className="about-anim-photo md:col-span-4 bg-[var(--color-surface-container-low)] rounded-3xl overflow-hidden relative group opacity-0 translate-y-[30px] will-change-anim anim-entrance shadow-sm" style={{ transitionDelay: '250ms', height: '250px', opacity: 1, transform: 'translateY(0)' }}>
-                  <Image src="/PHOTOS/Hero-section-2.jpg" alt="Speaking at event" width={400} height={250} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
+                  <Image src="/PHOTOS/Hero-section-2.jpg" alt="Speaking at event" width={400} height={250} className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" />
               </div>
               <div className="about-anim-photo md:col-span-8 bg-[var(--color-surface-container-low)] rounded-3xl overflow-hidden relative group opacity-0 translate-y-[30px] will-change-anim anim-entrance shadow-sm" style={{ transitionDelay: '300ms', height: '250px', opacity: 1, transform: 'translateY(0)' }}>
-                  <Image src="/PHOTOS/Hero-section-3.jpg" alt="Receiving badge" width={800} height={250} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
+                  <Image src="/PHOTOS/Hero-section-3.jpg" alt="Receiving badge" width={800} height={250} className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
                       <p className="font-label text-xs uppercase tracking-widest font-bold">Award Ceremony</p>

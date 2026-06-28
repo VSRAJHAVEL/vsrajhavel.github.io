@@ -12,7 +12,7 @@ export default function Experience() {
             {/* Robofest Hero (Spans 2x2 on desktop) */}
             <div className="bento-card bento-hero md:col-span-2 md:row-span-2 justify-between group p-0 relative">
                 <div className="absolute inset-0 z-0 overflow-hidden rounded-[1.5rem]">
-                    <Image src="/PHOTOS/robo-fest-final-round.jpg" alt="Robofest 5.0" width={800} height={800} className="w-full h-full object-cover object-top opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700" loading="lazy" />
+                    <Image src="/PHOTOS/robo-fest-final-round.jpg" alt="Robofest 5.0" width={800} height={800} className="w-full h-full object-cover object-center opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent"></div>
                 </div>
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700 z-10">
