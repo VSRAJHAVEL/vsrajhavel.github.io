@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "RAJHAVEL V S - AI/ML Engineer",
   description: "Rajhavel V S — AI/ML Engineer. Building intelligent systems across Machine Learning, Computer Vision, and scalable web architecture.",
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.png',
     shortcut: '/favicon.png',
     apple: '/favicon.png',
   },
