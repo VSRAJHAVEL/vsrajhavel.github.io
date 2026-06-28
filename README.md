@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rajhavel V S - AI/ML Engineer Portfolio
 
-## Getting Started
+Welcome to the repository for my personal portfolio! This is a modern, highly interactive web application built to showcase my projects, skills, and experience as an AI/ML Engineer and Web Developer.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**[Visit my Portfolio](https://vsrajhavel.github.io)**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Technology Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This portfolio was engineered from the ground up for maximum performance, maintainability, and aesthetic appeal using a modern web stack:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js (App Router)** - For blazing fast static generation and optimized React rendering.
+- **React 19** - For modular, reusable component architecture.
+- **Tailwind CSS v4** - For responsive, utility-first styling and fluid design.
+- **Lenis** - For buttery-smooth, physics-based inertial scrolling.
+- **Custom CSS Animations** - For seamless section transitions, stagger effects, and parallax interactions.
 
-## Learn More
+## 🌟 Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Sleek Aesthetic**: A modern dark mode design with gradient meshes, fixed backgrounds, and parallax scrolling.
+- **ScrollSpy Navigation**: An intelligent navigation bar that dynamically highlights the active section based on your viewport.
+- **Global Hit Counter**: A live, API-driven visitor counter seamlessly integrated into the footer.
+- **Component-Driven**: Fully modular React component structure ensuring easy maintainability and scalability.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 About Me
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+I am a final-year Computer Science engineer at Karunya University, pushing the boundaries of Artificial Intelligence, Machine Learning, scalable Web Architecture, and Quantum Computing. I specialize in building intelligent, data-driven systems and responsive web applications.
 
-## Deploy on Vercel
+Feel free to explore my repositories or reach out to me via the contact links on my portfolio!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Engineered with Precision by Rajhavel V S.*
