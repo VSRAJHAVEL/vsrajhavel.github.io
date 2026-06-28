@@ -8,7 +8,7 @@ export default function Skills() {
         </div>
 
         {/* Hover Accordion */}
-        <div className="flex flex-col md:flex-row h-[600px] w-full gap-3 mt-8">
+        <div className="flex flex-col md:flex-row h-[800px] md:h-[600px] w-full gap-3 mt-8">
           
           {/* Programming */}
           <div className="group relative flex-1 md:hover:flex-[4] hover:flex-[2] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] cursor-pointer hover:bg-[var(--color-on-secondary-fixed)] hover:shadow-2xl">

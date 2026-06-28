@@ -18,17 +18,17 @@ export default function Hero() {
             Final-year Computer Science engineer at Karunya University, pushing the boundaries of Artificial Intelligence, Machine Learning, scalable Web Architecture, and Quantum Computing.
           </p>
           <div 
-            className="flex gap-4 opacity-0 translate-y-[20px] will-change-anim anim-entrance"
+            className="flex flex-col sm:flex-row gap-4 opacity-0 translate-y-[20px] will-change-anim anim-entrance"
             style={{ transitionDelay: '300ms', opacity: 1, transform: 'translateY(0)' }}
           >
             <a 
-              className="bg-white text-black font-body font-medium text-[var(--text-body-md)] px-6 py-3 rounded-lg hover:bg-gray-200 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 ease" 
+              className="bg-white text-black font-body font-medium text-[var(--text-body-md)] px-6 py-3 rounded-lg hover:bg-gray-200 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 ease text-center" 
               href="#projects"
             >
               View Projects
             </a>
             <a 
-              className="border border-[var(--color-surface-container-lowest)] text-white font-body font-medium text-[var(--text-body-md)] px-6 py-3 rounded-lg hover:bg-[var(--color-surface-tint)]/20 hover:border-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200 ease" 
+              className="border border-[var(--color-surface-container-lowest)] text-white font-body font-medium text-[var(--text-body-md)] px-6 py-3 rounded-lg hover:bg-[var(--color-surface-tint)]/20 hover:border-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200 ease text-center" 
               href="#contact"
             >
               Contact Me
