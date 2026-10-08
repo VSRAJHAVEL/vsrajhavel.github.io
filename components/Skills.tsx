@@ -1,107 +1,270 @@
 'use client';
-import { useState } from 'react';
 
-export default function Skills() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+import { useRef, useCallback } from 'react';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, clipReveal } from '@/lib/animations';
 
-  const skillsData = [
-    {
-      title: "Programming",
-      icon: "terminal",
-      skills: ["Python", "Java", "C", "C++"]
+const ease: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
+
+const domains = [
+  {
+    title: 'AI & Machine Learning',
+    icon: 'psychology',
+    skills: ['Python', 'TensorFlow / Keras', 'Computer Vision', 'Deep Learning', 'Generative AI', 'OpenCV'],
+  },
+  {
+    title: 'Web Development',
+    icon: 'code',
+    skills: ['React / Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS', 'Flask'],
+  },
+  {
+    title: 'Languages',
+    icon: 'terminal',
+    skills: ['Python', 'Java', 'C / C++', 'JavaScript', 'SQL'],
+  },
+  {
+    title: 'Data & Infrastructure',
+    icon: 'database',
+    skills: ['MySQL', 'MongoDB', 'Snowflake', 'Power BI', 'Git / Docker'],
+  },
+  {
+    title: 'Embedded & IoT',
+    icon: 'developer_board',
+    skills: ['Arduino', 'Raspberry Pi', 'ESP32', 'Jetson Nano', 'LiDAR / SLAM'],
+  },
+];
+
+const certs = [
+  { name: 'Google AI Essentials', year: '2024' },
+  { name: 'Google Cybersecurity', year: '2024' },
+  { name: 'Snowflake SnowPro', year: '2025' },
+];
+
+const cardReveal = {
+  hidden: { opacity: 0, y: 50, filter: 'blur(10px)', rotate: -1.5 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    rotate: 0,
+    transition: { delay: i * 0.15, duration: 0.8, ease },
+  }),
+};
+
+const skillItem = {
+  hidden: { opacity: 0, x: -20, filter: 'blur(4px)' },
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    filter: 'blur(0px)',
+    transition: { delay: 0.4 + i * 0.06, duration: 0.5, ease },
+  }),
+};
+
+const iconPop = {
+  hidden: { scale: 0, rotate: -90 },
+  visible: (i: number) => ({
+    scale: 1,
+    rotate: 0,
+    transition: {
+      delay: i * 0.15 + 0.2,
+      type: 'spring' as const,
+      stiffness: 260,
+      damping: 20,
     },
-    {
-      title: "Web Dev",
-      icon: "code",
-      skills: ["HTML", "CSS", "JavaScript", "React", "Node.js"]
-    },
-    {
-      title: "Databases",
-      icon: "database",
-      skills: ["SQL", "MySQL", "Power BI", "GitHub"]
-    },
-    {
-      title: "AI & ML",
-      icon: "psychology",
-      skills: ["Machine Learning", "Deep Learning", "Computer Vision", "Generative AI"]
-    },
-    {
-      title: "Embedded",
-      icon: "memory",
-      skills: ["Arduino", "ESP32", "Raspberry Pi", "Jetson Nano"]
-    }
-  ];
+  }),
+};
+
+function SkillCard({ domain, index, span }: {
+  domain: typeof domains[0];
+  index: number;
+  span?: boolean;
+}) {
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    const el = innerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    el.style.setProperty('--mx', `${x}px`);
+    el.style.setProperty('--my', `${y}px`);
+    el.style.transform =
+      `perspective(800px) rotateX(${((y - cy) / cy) * -5}deg) rotateY(${((x - cx) / cx) * 5}deg) translateY(-6px)`;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    const el = innerRef.current;
+    if (!el) return;
+    el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+  }, []);
 
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-surface-container-lowest)] px-4 md:px-8" id="skills">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="skills-anim-header opacity-0 translate-y-[20px] will-change-anim anim-entrance-fast text-center mb-12" style={{ opacity: 1, transform: 'translateY(0)' }}>
-          <div className="font-label text-[var(--color-primary)] text-xs font-semibold tracking-widest uppercase mb-4">WHAT I WORK WITH</div>
-          <h2 className="font-display text-[var(--text-headline-lg)] font-bold text-[var(--color-primary)]">Tech Stack</h2>
-        </div>
+    <motion.div
+      className={`relative ${span ? 'md:col-span-2' : ''}`}
+      variants={cardReveal}
+      custom={index}
+    >
+      <div
+        ref={innerRef}
+        className="skill-card relative group rounded-2xl h-full"
+        style={{
+          '--mx': '50%',
+          '--my': '50%',
+          transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        } as React.CSSProperties}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Animated gradient border */}
+        <div
+          className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(59,130,246,0.3) 0%, transparent 35%, transparent 65%, rgba(59,130,246,0.15) 100%)',
+          }}
+        />
 
-        {/* Interactive Accordion */}
-        <div className="flex flex-col md:flex-row h-[800px] md:h-[600px] w-full gap-3 mt-8">
-          
-          {skillsData.map((category, idx) => {
-            const isActive = activeIndex === idx;
-            return (
-              <div 
-                key={category.title}
-                onClick={() => setActiveIndex(isActive ? null : idx)}
-                onMouseEnter={() => setActiveIndex(idx)}
-                onMouseLeave={() => setActiveIndex(null)}
-                className={`relative transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden border border-[var(--color-outline-variant)] cursor-pointer ${
-                  isActive 
-                    ? 'flex-[2] md:flex-[4] bg-[var(--color-on-secondary-fixed)] shadow-2xl' 
-                    : 'flex-1 bg-[var(--color-surface-container-low)]'
-                }`}
+        {/* Mouse spotlight */}
+        <div
+          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[1]"
+          style={{
+            background:
+              'radial-gradient(450px circle at var(--mx) var(--my), rgba(59,130,246,0.07), transparent 40%)',
+          }}
+        />
+
+        {/* Card surface */}
+        <div className="relative bg-[#0a0a0a] rounded-2xl border border-white/[0.06] group-hover:border-transparent p-7 md:p-9 h-full transition-[border-color] duration-500 z-[2]">
+          {/* Edge highlight */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+          {/* Header */}
+          <div className="flex items-center gap-3.5 mb-7">
+            <motion.div
+              className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:bg-[#3B82F6]/10 group-hover:border-[#3B82F6]/20 transition-all duration-500"
+              variants={iconPop}
+              custom={index}
+            >
+              <span className="material-symbols-outlined text-lg text-white/30 group-hover:text-[#3B82F6] transition-colors duration-500">
+                {domain.icon}
+              </span>
+            </motion.div>
+            <h3 className="font-display text-sm font-semibold text-white/70 group-hover:text-white tracking-wide transition-colors duration-300">
+              {domain.title}
+            </h3>
+          </div>
+
+          {/* Skills */}
+          <div className={span ? 'grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-0' : ''}>
+            {domain.skills.map((skill, si) => (
+              <motion.div
+                key={skill}
+                className="group/s flex items-center gap-3 py-2.5 border-b border-white/[0.03] last:border-0 cursor-default"
+                variants={skillItem}
+                custom={si}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
               >
-                {/* Expanded Content */}
-                <div 
-                  className={`absolute inset-0 flex flex-col justify-center p-6 md:p-10 transition-opacity duration-700 delay-100 z-10 ${
-                    isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                  }`}
-                >
-                  <div className="flex items-center gap-3 mb-6 text-white">
-                    <span className="material-symbols-outlined text-3xl md:text-4xl">{category.icon}</span>
-                    <h3 className="font-display text-2xl md:text-3xl font-bold">{category.title}</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2 min-w-[200px] md:min-w-[300px]">
-                    {category.skills.map(skill => (
-                      <span key={skill} className="font-label text-xs bg-white/10 text-white px-4 py-2 rounded-full backdrop-blur-md border border-white/20">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Collapsed Content */}
-                <div 
-                  className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none ${
-                    isActive ? 'opacity-0' : 'opacity-100'
-                  }`}
-                >
-                  <div className="flex md:flex-col items-center gap-4 md:gap-6 text-[var(--color-primary)] transition-colors duration-300">
-                    <span className="material-symbols-outlined text-3xl">{category.icon}</span>
-                    <h3 className="font-display text-xl font-bold whitespace-nowrap md:[writing-mode:vertical-rl] md:rotate-180">
-                      {category.title}
-                    </h3>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="cert-badges mt-24 mb-12 flex flex-col items-center opacity-0 translate-y-[20px] will-change-anim anim-entrance-fast" style={{ transitionDelay: '500ms', opacity: 1, transform: 'translateY(0)' }}>
-          <h3 className="font-label text-[var(--color-primary)] text-xs font-semibold tracking-widest uppercase mb-6 text-center">Certifications &amp; Credentials</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            <div className="bg-[var(--color-on-secondary-fixed)] text-white px-6 py-2 rounded-full font-label text-sm border border-[var(--color-outline-variant)] hover:bg-[var(--color-primary)] transition-colors cursor-default shadow-sm hover:shadow-md">Google AI Essentials 2024</div>
-            <div className="bg-[var(--color-on-secondary-fixed)] text-white px-6 py-2 rounded-full font-label text-sm border border-[var(--color-outline-variant)] hover:bg-[var(--color-primary)] transition-colors cursor-default shadow-sm hover:shadow-md">Google Cybersecurity 2024</div>
-            <div className="bg-[var(--color-on-secondary-fixed)] text-white px-6 py-2 rounded-full font-label text-sm border border-[var(--color-outline-variant)] hover:bg-[var(--color-primary)] transition-colors cursor-default shadow-sm hover:shadow-md">Snowflake SnowPro 2025</div>
+                <span className="w-1.5 h-1.5 rounded-full bg-white/[0.08] group-hover/s:bg-[#3B82F6] group-hover/s:shadow-[0_0_8px_rgba(59,130,246,0.6)] transition-all duration-300 shrink-0" />
+                <span className="font-body text-[15px] text-white/40 group-hover/s:text-white/90 transition-colors duration-300 leading-tight">
+                  {skill}
+                </span>
+                <span className="ml-auto w-0 group-hover/s:w-5 h-px bg-[#3B82F6]/40 transition-all duration-400 origin-left" />
+              </motion.div>
+            ))}
           </div>
         </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function Skills() {
+  return (
+    <section className="relative py-28 md:py-36 bg-[#050505] px-4 md:px-8 overflow-hidden" id="skills">
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 opacity-[0.25]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
+
+      <div className="relative max-w-[1200px] mx-auto">
+        {/* Header */}
+        <motion.div
+          className="mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerContainer}
+        >
+          <motion.div
+            variants={fadeUp}
+            custom={0}
+            className="font-label text-white/25 text-[11px] tracking-[0.2em] uppercase mb-5"
+          >
+            What I Work With
+          </motion.div>
+          <motion.div
+            className="overflow-hidden"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.h2
+              variants={clipReveal}
+              custom={1}
+              className="font-display text-5xl md:text-7xl font-bold text-white leading-[0.95]"
+            >
+              Tech Stack
+            </motion.h2>
+          </motion.div>
+        </motion.div>
+
+        {/* Card Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+        >
+          <SkillCard domain={domains[0]} index={0} span />
+          <SkillCard domain={domains[1]} index={1} />
+          <SkillCard domain={domains[2]} index={2} />
+          <SkillCard domain={domains[3]} index={3} />
+          <SkillCard domain={domains[4]} index={4} />
+        </motion.div>
+
+        {/* Certifications */}
+        <motion.div
+          className="mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3, ease }}
+        >
+          <span className="font-label text-[10px] text-white/15 uppercase tracking-[0.2em] shrink-0">
+            Credentials
+          </span>
+          <div className="h-px w-8 bg-white/10 hidden sm:block" />
+          <div className="flex flex-wrap gap-3">
+            {certs.map((cert) => (
+              <div
+                key={cert.name}
+                className="font-label text-xs text-white/30 border border-white/[0.06] rounded-full px-4 py-1.5 hover:text-white/60 hover:border-white/[0.12] transition-all duration-300 cursor-default"
+              >
+                {cert.name} <span className="text-white/15">{cert.year}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
